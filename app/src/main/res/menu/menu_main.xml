@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.lyeng.notekeeper.TeaActivity">
     <item
+        android:id="@+id/action_notif"
+        android:icon="@drawable/ic_notifications"
+        android:orderInCategory="100"
+        android:title="Remind"
+        app:showAsAction="ifRoom|withText" />
+    <item
         android:id="@+id/action_get_together"
         android:icon="@drawable/ic_people"
         android:orderInCategory="100"

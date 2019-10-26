@@ -1,7 +1,11 @@
 package com.lyeng.notekeeper
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.support.design.widget.NavigationView
@@ -78,7 +82,21 @@ class ItemsActivity : AppCompatActivity(),
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
+        registerNotificationChannel();
+
         nav_view.setNavigationItemSelectedListener(this)
+    }
+
+    private fun registerNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val nm = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val channel = NotificationChannel(
+                ReminderNotification.REMINDER_CHANNEL,
+                "Note Reminders",
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
+            nm.createNotificationChannel(channel)
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {

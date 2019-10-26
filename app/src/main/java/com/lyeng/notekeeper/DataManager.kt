@@ -45,49 +45,49 @@ object DataManager {
 
         var course = hashmapOfTeaType["01_black_tea"]!!
         var note = TeaInfo(
-            course, "The Blackest Black Tea",
+            course, "The crushed Ghana beans",
             "It is good!"
         )
         listOfTeas.add(note)
         note = TeaInfo(
-            course, "The Blackest Black Tea 2",
-            "PendingIntents are powerful"
+            course, "The burnt Brazilian beans",
+            "It is great!"
         )
         listOfTeas.add(note)
 
         course = hashmapOfTeaType["02_milk_tea"]!!
         note = TeaInfo(
-            course, "The Milkiest Milk Tea",
-            "Did you know that by default an "
+            course, "The Berry Rouge",
+            "3 berry mix"
         )
         listOfTeas.add(note)
         note = TeaInfo(
-            course, "The Milkiest Milk Tea 2",
-            "Foreground Services can be tied to a "
+            course, "THe standard British milk tea",
+            "Evening cup of goodness"
         )
         listOfTeas.add(note)
 
         course = hashmapOfTeaType["03_herb_tea"]!!
         note = TeaInfo(
-            course, "The Herbiest Tea",
-            "Leverage variable-length parameter lists"
+            course, "Lemon and Ginger Tea",
+            "It's amazing !"
         )
         listOfTeas.add(note)
         note = TeaInfo(
-            course, "The Herbiest Tea 2",
-            "Anonymous classes simplify implementing one-use types"
+            course, "Mixed herbs",
+            "It's refreshing!"
         )
         listOfTeas.add(note)
 
         course = hashmapOfTeaType["04_green_tea"]!!
         note = TeaInfo(
-            course, "The greenest green tea",
-            "The -jar option isn't compatible"
+            course, "The Japanese Green tea",
+            "No sugar baby"
         )
         listOfTeas.add(note)
         note = TeaInfo(
-            course, "The greenest green tea 2",
-            "Remember to include SerialVersionUID"
+            course, "The Lipton green tea",
+            "Just why ?..."
         )
         listOfTeas.add(note)
     }

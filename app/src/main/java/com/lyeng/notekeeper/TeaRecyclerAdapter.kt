@@ -43,6 +43,7 @@ class TeaRecyclerAdapter(private val context: Context, private val teas: List<Te
         holder.textTeaType?.text = tea.textTeaType?.teaTypeName
         holder.textTeaName?.text = tea.textTeaName
         holder.teaPosition = position
+        holder.color.setBackgroundColor(tea.color)
     }
 
     //public class CoffeeHolder extends RecyclerView.ViewHolder
@@ -50,6 +51,7 @@ class TeaRecyclerAdapter(private val context: Context, private val teas: List<Te
         val textTeaType = itemView.findViewById<TextView?>(R.id.textTeaType)
         val textTeaName = itemView.findViewById<TextView?>(R.id.textTeaName)
         var teaPosition = 0
+        var color: View = itemView.findViewById(R.id.noteColor)
 
         init {
             itemView.setOnClickListener {

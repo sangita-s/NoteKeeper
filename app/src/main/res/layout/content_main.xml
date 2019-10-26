@@ -45,4 +45,22 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/spinnerTeaType"
         app:layout_constraintTop_toBottomOf="@+id/textTeaTitle" />
+
+    <TextView
+        android:id="@+id/colorSelectorLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Note Colour"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTeaText" />
+
+    <com.lyeng.notekeeper.ColourSelector
+        android:id="@+id/colourSelectorPrio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/colorSelectorLabel"
+        app:colors="@array/note_color_array"/>
+
 </android.support.constraint.ConstraintLayout>

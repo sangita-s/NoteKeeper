@@ -1,5 +1,6 @@
 package com.lyeng.notekeeper
 
+import android.graphics.Color
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
@@ -14,6 +15,7 @@ import kotlinx.android.synthetic.main.content_main.*
 
 class TeaActivity : AppCompatActivity() {
     private var teaPosition = POSITION_NOT_SET
+    private var noteColor: Int = Color.TRANSPARENT
 
     companion object {
         private val tag = this::class.simpleName
@@ -55,6 +57,16 @@ class TeaActivity : AppCompatActivity() {
         } else {
             createNewNote()
         }
+        //Java style
+//        colourSelectorPrio.setColorSelectListener(object : ColourSelector.ColorSelectListener {
+//            override fun onColorSelected(color: Int) {
+//                noteColor = color
+//            }
+//        })
+
+        colourSelectorPrio.addListener { color ->
+            noteColor = color
+        }
     }
 
 //    //For location manager
@@ -86,6 +98,8 @@ class TeaActivity : AppCompatActivity() {
         //below textMessage from layout
         textTeaTitle.setText(tea.textTeaName)
         textTeaText.setText(tea.textMessage)
+        colourSelectorPrio.selectedColorValue = tea.color
+        noteColor = tea.color
 
         val teaPos = DataManager.hashmapOfTeaType.values.indexOf(tea.textTeaType)
         spinnerTeaType.setSelection(teaPos, true)
@@ -110,6 +124,18 @@ class TeaActivity : AppCompatActivity() {
         //when - like switch. Or if , else if
         return when (item.itemId) {
             R.id.action_settings -> true
+            R.id.action_notif -> {
+                ReminderNotification.notify(
+                    this,
+                    "Reminder",
+                    getString(
+                        R.string.reminder_body,
+                        DataManager.listOfTeas[teaPosition].textTeaName
+                    ),
+                    teaPosition
+                )
+                true
+            }
             R.id.action_next -> {
                 if (DataManager.isLastNoteId(teaPosition)) {
                     showMessage("No more notes")
@@ -152,5 +178,7 @@ class TeaActivity : AppCompatActivity() {
         tea.textTeaName = textTeaTitle.text.toString()
         tea.textMessage = textTeaText.text.toString()
         tea.textTeaType = spinnerTeaType.selectedItem as TeaTypeInfo
+        tea.color = this.noteColor
+        NoteKeeperAppWidget.sendRefreshBroadcast(this)
     }
 }

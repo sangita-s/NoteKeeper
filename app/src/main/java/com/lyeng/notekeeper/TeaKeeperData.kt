@@ -1,5 +1,7 @@
 package com.lyeng.notekeeper
 
+import android.graphics.Color
+
 data class TeaTypeInfo(val tesTypeId: String, val teaTypeName: String) {
     override fun toString(): String {
         return teaTypeName
@@ -11,5 +13,6 @@ data class TeaTypeInfo(val tesTypeId: String, val teaTypeName: String) {
 data class TeaInfo(
     var textTeaType: TeaTypeInfo? = null,
     var textTeaName: String? = null,
-    var textMessage: String? = null
+    var textMessage: String? = null,
+    var color: Int = Color.TRANSPARENT
 )
